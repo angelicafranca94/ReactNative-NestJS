@@ -3,56 +3,29 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './style/MainStyle';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Login from './screens/Login';
+import Principal from './screens/Principal';
+import 'react-native-gesture-handler';
 
-export default function App() {
 
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
+const Stack = createStackNavigator();
 
-  const entrar = () => {
-    console.log("entrou")
-    console.log(email)
-    console.log(password)
-  }
-
+function MyStack() {
   return (
-    <View style={[styles.container, specifcStyle.specificContainer]}>
-
-      <Text h3>Entre no TemTudaki</Text>
-
-      <Input
-      placeholder="E-mail"
-      leftIcon={{ type: 'font-awesome', name: 'envelope' }}
-      onChangeText={value => setEmail(value)}
-      keyboardType="email-address"
-      />
-
-      <Input
-      placeholder="Sua senha"
-      leftIcon={{ type: 'font-awesome', name: 'lock' }}
-      onChangeText={value => setPassword(value)}
-      secureTextEntry={true}
-      />
-
-      <Button
-              icon={
-                <Icon
-                  name="check"
-                  size={15}
-                  color="white"
-                />
-              }
-              title="Entrar"
-              onPress={() => entrar()}
-      />
-
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Principal" component={Principal} />
+    </Stack.Navigator>
   );
 }
 
 
-const specifcStyle = StyleSheet.create({
-  specificContainer: {
-    backgroundColor: "#def"
-  }
-})
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
+}
