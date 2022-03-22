@@ -1906,6 +1906,11 @@
   "resolved" "https://registry.npmjs.org/big-integer/-/big-integer-1.6.51.tgz"
   "version" "1.6.51"
 
+"bignumber.js@^9.0.1":
+  "integrity" "sha512-GAcQvbpsM0pUb0zw1EI0KhQEZ+lRwR5fYaAp3vPOYuP7aDvGy6cVN6XHLauvF8SOga2y0dcLcjt3iQDTSEliyw=="
+  "resolved" "https://registry.npmjs.org/bignumber.js/-/bignumber.js-9.0.2.tgz"
+  "version" "9.0.2"
+
 "blueimp-md5@^2.10.0":
   "integrity" "sha512-DRQrD6gJyy8FbiE4s+bDoXS9hiW3Vbx5uCdwvcCf3zLHL+Iv7LtGHLpr+GZV8rHG8tK766FGYBwRbu8pELTt+w=="
   "resolved" "https://registry.npmjs.org/blueimp-md5/-/blueimp-md5-2.19.0.tgz"
@@ -2391,6 +2396,11 @@
   "integrity" "sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw=="
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.0.11.tgz"
   "version" "3.0.11"
+
+"date-and-time@0.9.0":
+  "integrity" "sha512-4JybB6PbR+EebpFx/KyR5Ybl+TcdXMLIJkyYsCx3P4M4CWGMuDyFF19yh6TyasMAIF5lrsgIxiSHBXh2FFc7Fg=="
+  "resolved" "https://registry.npmjs.org/date-and-time/-/date-and-time-0.9.0.tgz"
+  "version" "0.9.0"
 
 "dayjs@^1.8.15":
   "integrity" "sha512-JLC809s6Y948/FuCZPm5IX8rRhQwOiyMb2TfVVQEixG7P8Lm/gt5S7yoQZmC8x1UehI9Pb7sksEt4xx14m+7Ug=="
@@ -4682,6 +4692,21 @@
     "lodash" "^4.17.21"
     "prop-types" "^15.7.2"
 
+"react-native-mask-text@^0.7.0":
+  "integrity" "sha512-gp6GGDsI3s+UP8TIhh+iIjkIgnq0HsZGuMa9qW1+BdcPr9u9rpEzghPhcnWJd5sj/0ONqpudBI5Z8OABB5WH/g=="
+  "resolved" "https://registry.npmjs.org/react-native-mask-text/-/react-native-mask-text-0.7.0.tgz"
+  "version" "0.7.0"
+  dependencies:
+    "bignumber.js" "^9.0.1"
+
+"react-native-masked-text@^1.13.0":
+  "integrity" "sha512-iMku5Ky6DP4fTRosjsYNJOhH8yoBQCzRALBdv1wVDKmCBQhhVE8RHr5EW4SNUjkYTZL473sDdEKl4NI948q9FQ=="
+  "resolved" "https://registry.npmjs.org/react-native-masked-text/-/react-native-masked-text-1.13.0.tgz"
+  "version" "1.13.0"
+  dependencies:
+    "date-and-time" "0.9.0"
+    "tinymask" "1.0.2"
+
 "react-native-ratings@8.0.4":
   "integrity" "sha512-Xczu5lskIIRD6BEdz9A0jDRpEck/SFxRqiglkXi0u67yAtI1/pcJC76P4MukCbT8K4BPVl+42w83YqXBoBRl7A=="
   "resolved" "https://registry.npmjs.org/react-native-ratings/-/react-native-ratings-8.0.4.tgz"
@@ -5447,6 +5472,11 @@
   dependencies:
     "readable-stream" "~2.3.6"
     "xtend" "~4.0.1"
+
+"tinymask@1.0.2":
+  "integrity" "sha1-3zd1qUCHsNPQVsJW6JI8AbfsCUE="
+  "resolved" "https://registry.npmjs.org/tinymask/-/tinymask-1.0.2.tgz"
+  "version" "1.0.2"
 
 "tmpl@1.0.5":
   "integrity" "sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw=="

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, CheckBox, Input, Text } from 'react-native-elements';
+import { TextInputMask } from 'react-native-masked-text';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../style/MainStyle';
 
@@ -16,6 +17,9 @@ export default function Cadastro({navigation}) {
   const [errorCpf, setErrorCpf] = useState(null)
   const [errorTelefone, setErrorTelefone] = useState(null)
 
+  let cpfField = null
+  let telefoneField = null
+
   const validar = () => {
 
     let error = false
@@ -28,8 +32,13 @@ export default function Cadastro({navigation}) {
       error = true
     }
 
-    if(cpf == null){
-      setErrorCpf("Preencha seu cpf")
+    if(!cpfField.isValid()){
+      setErrorCpf("Preencha seu cpf corretamente")
+      error = true
+    }
+
+    if(telefone == null){
+      setErrorTelefone("Preencha seu telefone corretamente")
       error = true
     }
     return !error
@@ -62,23 +71,43 @@ export default function Cadastro({navigation}) {
           errorMessage={errorNome}
         />
 
-        <Input
-          placeholder="CPF"
-          onChangeText={value => {
-            setCpf(value)
-            setErrorCpf(null)}}
-          keyboardType="number-pad"
-          returnKeyType="done"
-          errorMessage={errorCpf}
-        />
+        <View style={styles.containerMask}>
+          <TextInputMask
+            placeholder="CPF"
+            type={'cpf'}
+            value={cpf}
+            onChangeText={value => {
+              setCpf(value)
+              setErrorCpf(null)}}
+            keyboardType="number-pad"
+            returnKeyType="done"
+           
+            style={styles.maskedInput}
+            ref={(ref) => cpfField = ref}
+          />
+        </View>
+        <Text style={styles.errorMessage}>{errorCpf}</Text>
 
-        <Input
-          placeholder="Telefone"
-          onChangeText={value => setTelefone(value)}
-          keyboardType="phone-pad"
-          returnKeyType="done"
-          errorMessage={errorTelefone}
-        />
+        <View style={styles.containerMask}>
+          <TextInputMask
+            placeholder="Telefone"
+            type={'cel-phone'}
+            options={{
+              maskType: 'BRL',
+              withDDD: true,
+              dddMask: '(99) '
+            }}
+            value={telefone}
+            onChangeText={value => 
+              setTelefone(value)}
+              keyboardType="phone-pad"
+              returnKeyType="done"
+            style={styles.maskedInput}
+            ref={(ref) => telefoneField = ref}
+          />
+        </View>
+        <Text style={styles.errorMessage}>{errorTelefone}</Text>
+
       
         <CheckBox 
           title="Eu aceito os termos de uso"
