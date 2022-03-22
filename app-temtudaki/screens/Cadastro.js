@@ -11,9 +11,35 @@ export default function Cadastro({navigation}) {
   const [cpf, setCpf] = useState(null)
   const [telefone, setTelefone] = useState(null)
   const [isSelected, setSelected] = useState(false)
+  const [errorEmail, setErrorEmail] = useState(null)
+  const [errorNome, setErrorNome] = useState(null)
+  const [errorCpf, setErrorCpf] = useState(null)
+  const [errorTelefone, setErrorTelefone] = useState(null)
+
+  const validar = () => {
+
+    let error = false
+    setErrorEmail(null)
+    setErrorCpf(null)
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if(!re.test(String(email).toLowerCase())){
+      setErrorEmail("Preencha com um email válido")
+      error = true
+    }
+
+    if(cpf == null){
+      setErrorCpf("Preencha seu cpf")
+      error = true
+    }
+    return !error
+  }
 
   const salvar = () => {
-    console.log("salvou")
+    if(validar()){
+      console.log("salvou")
+    }
+   
   }
 
   return (
@@ -23,20 +49,27 @@ export default function Cadastro({navigation}) {
 
         <Input
         placeholder="E-mail"
-        onChangeText={value => setEmail(value)}
+        onChangeText={value => {
+          setEmail(value)
+          setErrorEmail(null)}}
         keyboardType="email-address"
+        errorMessage={errorEmail}
         />
 
         <Input
           placeholder="Nome"
           onChangeText={value => setNome(value)}
+          errorMessage={errorNome}
         />
 
         <Input
           placeholder="CPF"
-          onChangeText={value => setCpf(value)}
+          onChangeText={value => {
+            setCpf(value)
+            setErrorCpf(null)}}
           keyboardType="number-pad"
           returnKeyType="done"
+          errorMessage={errorCpf}
         />
 
         <Input
@@ -44,6 +77,7 @@ export default function Cadastro({navigation}) {
           onChangeText={value => setTelefone(value)}
           keyboardType="phone-pad"
           returnKeyType="done"
+          errorMessage={errorTelefone}
         />
       
         <CheckBox 
