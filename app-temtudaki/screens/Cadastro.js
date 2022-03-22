@@ -57,7 +57,8 @@ export default function Cadastro({navigation}) {
       behavior={Platform.OS == 'ios' ? 'padding' : null}
       style={[styles.container, specificStyle.specificContainer]}
       keyboardVerticalOffset={80}>
-        <ScrollView style={{width: "100%"}}>
+
+      <ScrollView style={{width: "100%"}}>
 
       <Text h3>Cadastre-se</Text>
 
