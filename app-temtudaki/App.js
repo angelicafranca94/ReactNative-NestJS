@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import styles from './style/MainStyle';
 
 export default function App() {
 
@@ -15,8 +16,10 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, specifcStyle.specificContainer]}>
+
       <Text h3>Entre no TemTudaki</Text>
+
       <Input
       placeholder="E-mail"
       leftIcon={{ type: 'font-awesome', name: 'envelope' }}
@@ -24,7 +27,7 @@ export default function App() {
       keyboardType="email-address"
       />
 
-       <Input
+      <Input
       placeholder="Sua senha"
       leftIcon={{ type: 'font-awesome', name: 'lock' }}
       onChangeText={value => setPassword(value)}
@@ -47,11 +50,9 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+const specifcStyle = StyleSheet.create({
+  specificContainer: {
+    backgroundColor: "#def"
+  }
+})
