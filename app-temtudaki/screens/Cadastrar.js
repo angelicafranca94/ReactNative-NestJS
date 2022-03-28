@@ -1,10 +1,47 @@
+import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import { Text, View } from 'react-native';
+import { Button } from 'react-native-elements';
+import Icon  from 'react-native-vector-icons/FontAwesome';
+import styles from '../style/MainStyle';
 
-export default function Cadastrar() {
+export default function Cadastrar({navigation}) {
+
+    function cadastrarServico(){
+      navigation.navigate("CadastroServico")
+    }
+
+    function cadastrarProduto(){
+      navigation.navigate("CadastroProduto")
+    }
+
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Cadastro</Text>
+        <Text>O que você quer cadastrar?</Text>
+        <Button
+              icon={
+                <Icon
+                  name="child"
+                  size={15}
+                  color="white"
+                />
+              }
+              title="Cadastrar serviço"
+              buttonStyle={styles.button}
+              onPress={() => cadastrarServico()}
+            />
+             <Button
+              icon={
+                <Icon
+                  name="shopping-bag"
+                  size={15}
+                  color="white"
+                />
+              }
+              title="Cadastrar produto"
+              buttonStyle={styles.button}
+              onPress={() => cadastrarProduto()}
+            />
       </View>
     );
   }
