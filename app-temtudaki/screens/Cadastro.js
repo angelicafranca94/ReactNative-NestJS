@@ -43,9 +43,11 @@ const hideDialog = (status) => {
 
 const validar = () => {
   let error = false
+  setErrorNome(null)
   setErrorEmail(null)
   setErrorCpf(null)
   setErrorSenha(null)
+  setErrorTelefone(null)
   
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   if (!re.test(String(email).toLowerCase())){
@@ -56,6 +58,10 @@ const validar = () => {
     setErrorCpf("Preencha seu CPF corretamente")
     error = true
   }
+  if (nome == null){
+    setErrorNome("Preencha seu nome")
+    error = true
+  }
   if (telefone == null){
     setErrorTelefone("Preencha seu telefone corretamente")
     error = true
@@ -64,6 +70,11 @@ const validar = () => {
     setErrorSenha("Preencha a senha")
     error = true
   }
+
+  if (!isSelected){
+    error = true
+  }
+
   return !error
 }
 
@@ -82,14 +93,14 @@ const salvar = () => {
     usuarioService.cadastrar(data)
     .then((response) => {
       setLoading(false)
-      const titulo = (response.data.status) ? "Sucesso" : "Erro"
-      showDialog(titulo, response.data.mensagem, "SUCESSO")
+      const titulo = (response.data.status) ? "Sucesso!" : "Erro!"
+      showDialog(titulo, response.data.message, "SUCESSO")
       //Alert.alert(titulo, response.data.mensagem)          
     })
     .catch((error) => {
       debugger;
       setLoading(false)
-      console.log(JSON.stringify(error));
+     // console.log(JSON.stringify(error));
       showDialog("Erro","Houve um erro inesperado", "ERRO")
       //Alert.alert("Erro", "Houve um erro inesperado")
     })
